@@ -1,0 +1,41 @@
+*************************************************************************************
+Contains technical specification of the application
+*************************************************************************************
+This banking application contains below features.
+
+User stories
+---------------------------------------------------------------------------------------------------------------------------------------------------
+1. Account creation:(OB-Story-001)
+"As a default administrator, I want to create bank account for user,so that user can further do banking transactions on his/her account"
+Acceptance criteria:
+a. Account username should be provided.
+b. Account no should be auto-generated and should be a readonly field.
+c. I need to choose whether it is savings bank account or current bank account.
+d. few details of the account.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+2. Implement logging(OB-Story-002)
+"As a system administrator,I want to see logger is implemented so that developer,administrator can see the log messages for track errors and 
+debug applications"
+1.Log4j should be implemented
+2.It should have capability to print in console and file logging.
+----------------------------------------------------------------------------------------------------------------------------------------------------
+3. Develop new UI(OB-Story-003)
+"As a system user, I want to see create bank account UI's are implemented using bootstrap and Angular JS, so that it has the responsive facility"
+1. Use bootstrap 
+2. Use angularJS
+----------------------------------------------------------------------------------------------------------------------------------------------------
+4. Implement security for API(OB-Story-004)
+"As a API consumer,I need valid authentication mechanism to be able to use the API, such that no unauthorized user will not be able to access API's"
+1. HMAC authentication will be implemented
+2. client will pass, api key, generated HMAC and date field in header along with data to be sent in request body.
+3. signature which will be used to calculated the hash code(HMAC) will be of a string
+    Http Method + Content + content type + date + uri. Each field will be separated by newline.
+4. generated HMAC code will be url encoded and then sent to server. Similarly component from server will need to url decode to get the value.
+5. Client and API provider will be agreed on a private key agaist each api key which will be stored in database.
+6. private key will never be transmitted during API call.
+7. Client and API provider will communicate via secured http(SSL).
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Create account validation(OB-Story-005)
+"As a default administrator, I want to create bank account in such a way that,all my inputs are validated against some validation logic and I get appropriate error message"
+1. All not null fields should be validated with appropriate message
+2. All date fields should be validated with appropriate format.    

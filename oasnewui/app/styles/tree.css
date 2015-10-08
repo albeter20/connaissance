@@ -1,0 +1,31 @@
+#orgNodeTree{
+	font-weight: bold;
+}
+#orgNodeTree ul {
+  list-style-type: none;
+  padding-left: 20px;
+  font-weight: bold;
+}
+#orgNodeTree ul li:before {
+  content:url("../img/Arrow-down.png");
+/*   content: '-'; */
+  
+  display: inline-block;
+  width: 10px;
+ 
+}
+
+#orgNodeTree .collapsed ul {
+  display: none;
+  
+}
+
+#orgNodeTree li.collapsed:before {
+  content: '+';
+  display: inline-block;
+  width: 10px;
+}
+
+#orgNodeTree li a:hover {
+  cursor: pointer;
+}

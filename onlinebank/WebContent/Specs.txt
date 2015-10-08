@@ -1,0 +1,25 @@
+*************************************************************************************
+Contains technical specification of the application
+*************************************************************************************
+This banking application contains below features.
+
+User stories
+-------------------------------------------------------------------------------------------------------------------------------------------
+1. Account creation:(OB-Story-001)
+"As a default administrator, I want to create bank account for user,so that user can further do banking transactions on his/her account"
+Acceptance criteria:
+a. Account username should be provided.
+b. Account no should be auto-generated and should be a readonly field.
+c. I need to choose whether it is savings bank account or current bank account.
+d. few details of the account.
+-------------------------------------------------------------------------------------------------------------------------------------------
+2. Implement logging(OB-Story-002)
+"As a system administrator,I want to see logger is implemented so that developer,administrator can see the log messages for track errors and 
+debug applications"
+1.Log4j should be implemented
+2.It should have capability to print in console and file logging.
+-------------------------------------------------------------------------------------------------------------------------------------------
+3. Develop new UI(OB-Story-003)
+"As a system user, I want to see create bank account UI's are implemented using bootstrap and Angular JS, so that it has the responsive facility"
+1. Use bootstrap 
+2. Use angularJS
