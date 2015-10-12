@@ -18,6 +18,21 @@ angular.module('angularWorkshop')
           .then(function(response) {
               return response.data;
           });
+      },
+     getRepoDetails:function(username,reponame){
+        var repo;
+        var repoUrl='https://api.github.com/repos/'+username+'/'+reponame;
+        return $http.get(repoUrl)
+                    .then(function(response){
+                      repo=response.data;
+                      $log.info('First call'+repo.login);
+                      return $http.get(repoUrl+'/contributors');
+                    })
+                    .then(function(response){
+                      repo.contributors=response.data;
+                      $log.info('Second call '+repo.contributors);
+                      return repo;
+                    })
       }
     };
 

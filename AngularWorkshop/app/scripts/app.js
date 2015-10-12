@@ -8,6 +8,10 @@ angular.module('angularWorkshop', ['ngRoute'])
         templateUrl: 'views/users.html',
         controller: 'UserController'
       })
+      .when('/repo/:username/:reponame',{
+        templateUrl:'views/repo.html',
+        controller:'RepoController'
+      })
       .otherwise({
         redirectTo: '/main'
       });
