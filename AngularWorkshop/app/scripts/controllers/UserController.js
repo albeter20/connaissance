@@ -1,5 +1,4 @@
 angular.module('angularWorkshop')
-
 .controller('UserController', function($scope, gitHubService, $routeParams) {
   $scope.username = $routeParams.username;
   $scope.displaySortOrder = '-stargazers_count';
