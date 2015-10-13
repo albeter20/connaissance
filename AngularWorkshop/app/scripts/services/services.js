@@ -25,11 +25,18 @@ angular.module('angularWorkshop')
         return $http.get(repoUrl)
                     .then(function(response){
                       repo=response.data;
-                      $log.info('First call'+repo.login);
+                      $log.info('1.Name:'+repo.name);
+                      $log.info('1.Open Issues'+repo.open_issues_count);
+                  	  $log.info('Status text:'+response.statusText);
                       return $http.get(repoUrl+'/contributors');
+                    },function(reason){
+                    	$log.info('Problem in first call'+reason.status);
+                    	$log.info(reason.statusText);
                     })
                     .then(function(response){
                       repo.contributors=response.data;
+                      $log.info('2.Name:'+repo.name);
+                      $log.info('2.Open Issues'+repo.open_issues_count);
                       $log.info('Second call '+repo.contributors);
                       return repo;
                     })

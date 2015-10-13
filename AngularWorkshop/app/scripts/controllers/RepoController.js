@@ -6,7 +6,10 @@ angular.module('angularWorkshop')
 
     gitHubService.getRepoDetails(username, reponame)
       .then(function(response) {
-        $scope.repo = response.data;
+        $scope.repo = response;
+        $log.info('3.Name:'+repo.name);
+        $log.info('3.Open Issues'+repo.open_issues_count);
+        
       }, function(reason) {
         $scope.errorMessage = reason;
       });
