@@ -8,9 +8,9 @@ angular.module('angularWorkshop', ['ngRoute'])
         templateUrl: 'views/users.html',
         controller: 'UserController'
       })
-      .when('/user/:username/:repos',{
-    	templateUrl:'views/repos.html',
-    	controller:'ReposController'
+      .when('/repo/:username/:reponame',{
+        templateUrl:'views/repo.html',
+        controller:'RepoController'
       })
       .otherwise({
         redirectTo: '/main'
