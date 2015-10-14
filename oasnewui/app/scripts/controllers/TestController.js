@@ -94,6 +94,21 @@ angular
 					} ]
 				} ]
 			};
+			
+			
+			
+		})
+		.controller('PopUpController',function($scope){
+			
+			$scope.userAdd=function(){
+				alert('User Add is called');
+			};
+			
+			 $scope.showNumberFct = function(){
+			        alert("Work!!!!");
+			     }
+			
+			
 		})
 		.directive(
 				'tree',
