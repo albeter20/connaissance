@@ -7,9 +7,7 @@
   font-weight: bold;
 }
 #orgNodeTree ul li:before {
-  content:url("../img/Arrow-down.png");
-/*   content: '-'; */
-  
+  content: '-';
   display: inline-block;
   width: 10px;
  
