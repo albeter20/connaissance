@@ -9,8 +9,10 @@
 <!-- Bootstrap -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 <!-- jQuery library -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <!-- Latest compiled JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,17 +20,19 @@
 
 <!-- Download from CDN -->
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js" type="text/javascript"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js" type="text/javascript"></script>	
+	
 
 <!-- Adding the controllers -->
 <script src="scripts/app.js" type="text/javascript"></script>
 <script src="scripts/controllers/MainController.js" type="text/javascript"></script>
 <script src="scripts/controllers/UserController.js" type="text/javascript"></script>
-<link href="styles/sidebar.css" rel="stylesheet">
+<link href="styles/general.css" rel="stylesheet">
 <base href="/">
 </head>
 <body>
-	<div ng-view></div>
+	<div ui-view="header"></div>
+    <div ui-view="content"></div>
 </body>
 </html>
