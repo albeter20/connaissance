@@ -1,4 +1,6 @@
-angular.module('oasnewui')
-.controller('UserController',function($scope){
-	
-});
+angular.module('oasnewui').controller('UserController',
+		function($scope) {
+			$scope.cancel = function() {
+				$scope.$close();
+			};
+		});

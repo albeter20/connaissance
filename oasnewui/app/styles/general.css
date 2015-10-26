@@ -259,7 +259,6 @@ body {
 	padding: 0px;
 	border-left-width: 0px;
 	border-right-width: 0px;
-	width: 100%;
 	height: 29px;
 	border-top-width: 0px;
 	margin-left: 0px;
@@ -274,4 +273,12 @@ body {
 	box-shadow: none;
 	margin-bottom: -3px;
 	margin-top: 3px;
+}
+.popupDialog{
+	padding-left: 0px;
+	padding-right:0px;
+}
+.searchTable{
+	padding-left: 0px;
+	padding-right:0px;	
 }
