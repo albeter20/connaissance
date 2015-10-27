@@ -1,160 +1,175 @@
 <script type="text/ng-template" id="group-template.html">
     <div class="panel {{panelClass || 'panel-default'}}">
-      <div class="panel-heading">
-        <h4 class="panel-title" style="color:#fa39c3">
+      <div class="panel-heading" style="padding: 0px;">
+        <h4 class="panel-title" style="color:#fa39c3;background:linear-gradient(#E8E8E8,#5d5d5d);color:#fff;font-weight:bold;padding:0px;margin:0px;height:21px;">
           <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
             ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
         </h4>
       </div>
       <div class="panel-collapse collapse" uib-collapse="!isOpen">
-        <div class="panel-body" style="text-align: right" ng-transclude></div>
+        <div class="panel-body" style="text-align: right;padding-bottom: 1px;height:291px;" ng-transclude></div>
       </div>
     </div>
   </script>
 <div rows>
 	<div cols="col-md-12 col-sm-12 col-xs-12">
 		<div class="container-fluid popupDialog">
-			<div class="panel panel-primary"">
+			<div class="panel panel-primary popup-panel">
 				<div class="panel-heading">
 					<h3 class="panel-title">Add User</h3>
 				</div>
-				<div class="panel-body panel-noPadding">
+				<div class="panel-body panel-noPadding popup-panelbody">
 					<!--  Accordian start -->
-						<uib-accordion close-others="oneAtATime"> 
-						<uib-accordion-group
-							heading="Primary user data" is-open="true" is-disabled="false"
-							template-url="group-template.html">
-						<div class="rows">
-							<div class="col-md-7 col-sm-7 col-xs-7 panel-noPadding">
-								<form class="form-horizontal">
-									<div class="form-group form-group-sm">
-										<label for="inputFirstName" class="control-label col-xs-4">First
-											Name*</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your first name">
-										</div>
+					<uib-accordion close-others="true"> <uib-accordion-group
+						heading="Primary user data" is-open="true" is-disabled="false"
+						template-url="group-template.html">
+					<div class="rows">
+						<div class="col-md-6 col-sm-6 col-xs-6 panel-noPadding">
+							<form class="form-horizontal">
+								<div class="form-group form-group-sm popup-formgrp">
+									<label for="inputFirstName"
+										class="control-label col-xs-4 popup-frmLabel">First
+										Name*</label>
+									<div class="col-xs-8 popup-frmInput">
+										<input type="text" class="form-control"
+											placeholder="Enter your first name">
 									</div>
-									<div class="form-group form-group-sm">
-										<label for="middleName" class="control-label col-xs-4">Middle
-											Name*</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your middle name">
-										</div>
-									</div>
-									<div class="form-group form-group-sm">
-										<label for="lastName" class="control-label col-xs-4">Last
-											Name*</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your last name">
-										</div>
-									</div>
-
-									<div class="form-group form-group-sm">
-										<label for="inputEmail" class="control-label col-xs-4">Email</label>
-										<div class="col-xs-8">
-											<input type="email" class="form-control" id="inputEmail"
-												placeholder="Email">
-										</div>
-									</div>
-									<div class="form-group form-group-sm">
-										<label class="col-xs-4 control-label">Timezone</label>
-										<div class="col-xs-8">
-											<select class="form-control" name="browsers">
-												<option value="+530">India(delhi,chennai,kolkata)</option>
-												<option value="-1730">US east</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group form-group-sm">
-										<label class="col-xs-4 control-label">Role*</label>
-										<div class="col-xs-8">
-											<select class="form-control" name="browsers">
-												<option value="Administrator">Administrator</option>
-												<option value="Administrative-Co-ordinator">Administrative-Co-ordinator</option>
-												<option value="Proctor">Proctor</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group form-group-sm">
-										<label for="inputEmail" class="control-label col-xs-4">External UserId</label>
-										<div class="col-xs-8">
-											<input type="email" class="form-control" id="inputEmail"
-												placeholder="Email">
-										</div>
-									</div>
-									<div class="form-group form-group-sm">
-										<label for="inputEmail" class="control-label col-xs-4">Group</label>
-										<div class="col-xs-8">
-											<input type="email" class="form-control" id="inputEmail"
-												placeholder="Email">
-										</div>
-									</div>
-
-								</form>
-							</div>
-							<div class="col-md-5 col-sm-5 col-xs-5">
-								<div class="panel panel-primary">
-									<div class="panel-heading">
-										<h3 class="panel-title">Group selector</h3>
-									</div>
-									<div class="panel-body"></div>
 								</div>
-							</div>
+								<div class="form-group form-group-sm popup-formgrp">
+									<label for="middleName"
+										class="control-label col-xs-4 popup-frmLabel">Middle
+										Name*</label>
+									<div class="col-xs-8 popup-frmInput">
+										<input type="text" class="form-control"
+											placeholder="Enter your middle name">
+									</div>
+								</div>
+								<div class="form-group form-group-sm popup-formgrp">
+									<label for="lastName"
+										class="control-label col-xs-4 popup-frmLabel">Last
+										Name*</label>
+									<div class="col-xs-8 popup-frmInput">
+										<input type="text" class="form-control"
+											placeholder="Enter your last name">
+									</div>
+								</div>
 
+								<div class="form-group form-group-sm popup-formgrp">
+									<label for="inputEmail"
+										class="control-label col-xs-4 popup-frmLabel">Email</label>
+									<div class="col-xs-8 popup-frmInput">
+										<input type="email" class="form-control" id="inputEmail"
+											placeholder="Email">
+									</div>
+								</div>
+								<div class="form-group form-group-sm popup-formgrp">
+									<label class="col-xs-4 control-label popup-frmLabel">Timezone</label>
+									<div class="col-xs-8 popup-frmInput">
+										<select class="form-control" name="browsers">
+											<option value="+530">India(delhi,chennai,kolkata)</option>
+											<option value="-1730">US east</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group form-group-sm popup-formgrp">
+									<label class="col-xs-4 control-label popup-frmLabel">Role*</label>
+									<div class="col-xs-8 popup-frmInput">
+										<select class="form-control" name="browsers">
+											<option value="Administrator">Administrator</option>
+											<option value="Administrative-Co-ordinator">Administrative-Co-ordinator</option>
+											<option value="Proctor">Proctor</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group form-group-sm popup-formgrp">
+									<label for="inputEmail"
+										class="control-label col-xs-4 popup-frmLabel">External
+										UserId</label>
+									<div class="col-xs-8 popup-frmInput">
+										<input type="email" class="form-control" id="inputEmail"
+											placeholder="Email">
+									</div>
+								</div>
+								<div class="form-group form-group-sm popup-formgrp">
+									<label for="inputEmail"
+										class="control-label col-xs-4 popup-frmLabel">Group</label>
+									<div class="col-xs-8 popup-frmInput">
+										<input type="email" class="form-control" id="inputEmail"
+											placeholder="Email">
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 div-grpselector">
+							<div class="panel panel-primary">
+								<div class="panel-heading popup-panelgrphead">
+									<h3 class="panel-title popup-panelgrptitle">Group selector</h3>
+								</div>
+								<div class="panel-body popup-panelgrpbody"></div>
+							</div>
 						</div>
 
-						</uib-accordion-group> 
-			<uib-accordion-group heading="Contact information" template-url="group-template.html">
-						<form class="form-horizontal">
-							<div class="form-group form-group-sm">
-										<label for="inputFirstName" class="control-label col-xs-4">Address line 1</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your first name">
-										</div>
-							</div>
-							<div class="form-group form-group-sm">
-										<label for="inputFirstName" class="control-label col-xs-4">Address line 2</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your first name">
-										</div>
-							</div>
-							<div class="form-group form-group-sm">
-										<label for="inputFirstName" class="control-label col-xs-4">City</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your first name">
-										</div>
-							</div>
-							<div class="form-group form-group-sm">
-										<label for="inputFirstName" class="control-label col-xs-4">State</label>
-										<div class="col-xs-8">
-											<select class="form-control" name="browsers">
-												<option value="Missouri">Missouri</option>
-												<option value="West Verginia">West Verginia</option>
-											</select>
-										</div>
-							</div>
-							<div class="form-group form-group-sm">
-										<label for="inputFirstName" class="control-label col-xs-4">Zip</label>
-										<div class="col-xs-8">
-											<input type="text" class="form-control"
-												placeholder="Enter your first name">
-										</div>
-							</div>
-						</form>
-						
-						</uib-accordion-group> </uib-accordion>
-					
-					<!-- Accordian end -->
-					<div class="modal-footer">
-						<button class="btn button" ng-click="ok()">Okay</button>
-						<button class="btn button" ng-click="cancel()">Close</button>
 					</div>
+
+					</uib-accordion-group> <uib-accordion-group heading="Contact information"
+						template-url="group-template.html">
+					<form class="form-horizontal">
+						<div class="form-group form-group-sm popup-formgrp">
+							<label for="inputFirstName"
+								class="control-label col-xs-4 popup-frmLabel">Address
+								line 1</label>
+							<div class="col-xs-8 popup-frmInput">
+								<input type="text" class="form-control"
+									placeholder="Enter your first name">
+							</div>
+						</div>
+						<div class="form-group form-group-sm popup-formgrp">
+							<label for="inputFirstName"
+								class="control-label col-xs-4 popup-frmLabel">Address
+								line 2</label>
+							<div class="col-xs-8 popup-frmInput">
+								<input type="text" class="form-control"
+									placeholder="Enter your first name">
+							</div>
+						</div>
+						<div class="form-group form-group-sm popup-formgrp">
+							<label for="inputFirstName"
+								class="control-label col-xs-4 popup-frmLabel">City</label>
+							<div class="col-xs-8 popup-frmInput">
+								<input type="text" class="form-control"
+									placeholder="Enter your first name">
+							</div>
+						</div>
+						<div class="form-group form-group-sm popup-formgrp">
+							<label for="inputFirstName"
+								class="control-label col-xs-4 popup-frmLabel">State</label>
+							<div class="col-xs-8 popup-frmInput">
+								<select class="form-control" name="browsers">
+									<option value="Missouri">Missouri</option>
+									<option value="West Verginia">West Verginia</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm popup-formgrp">
+							<label for="inputFirstName"
+								class="control-label col-xs-4 popup-frmLabel">Zip</label>
+							<div class="col-xs-8 popup-frmInput">
+								<input type="text" class="form-control"
+									placeholder="Enter your first name"> -
+									
+							</div>
+						</div>
+					</form>
+
+					</uib-accordion-group> </uib-accordion>
+
+					<!-- Accordian end -->
+
+				</div>
+				<div class="modal-footer popup-panelfooter">
+					<button class="btn button" ng-click="createUser()">Save</button>
+					<button class="btn button" ng-click="cancel()">Cancel</button>
 				</div>
 			</div>
 		</div>

@@ -3,4 +3,8 @@ angular.module('oasnewui').controller('UserController',
 			$scope.cancel = function() {
 				$scope.$close();
 			};
+			
+			$scope.createUser=function(){
+				alert('Data received');
+			};
 		});

@@ -274,6 +274,11 @@ body {
 .button{
 	background:linear-gradient(#dedede, #747474);
 	border:0px;
+	height:25px;
+	font-size:12px;
+	font-weight: bold !important;
+	color:#fff;
+	font-family:calibri;
 }
 #button-group.raised:active,#button-group.raised.active {
 	background: #483d8b;
@@ -322,6 +327,49 @@ label{
     font-size: 10pt !important;
 }
 .panel-noPadding{
-	padding-left: 2px;
-	padding-right:2px;
+	padding: 3px;
+	
+}
+.popup-panelgrpbody{
+	height: 242px; 
+	padding: 4px;
+}
+.popup-panelgrphead{
+	padding: 0px; 
+	height: 24px;
+}
+.popup-panelgrptitle{
+	padding-top: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	padding-left: 3px;
+}
+.popup-formgrp{
+	margin-bottom: 4px;
+}
+.popup-frmInput{
+	padding-left: 4px;
+}
+.popup-frmLabel{
+	padding-right: 3px;
+}
+.div-grpselector{
+	padding-right: 3px; 
+	padding-left: 3px;
+	width: 272px;
+}
+a:link {
+    text-decoration: none;
+}
+.popup-panel{
+	margin-bottom: 0px;
+	border-width: 1px;
+}
+.popup-panelbody{
+	height: 348px;
+}
+.popup-panelfooter{
+	padding: 3px;
+	align:centre;
 }
