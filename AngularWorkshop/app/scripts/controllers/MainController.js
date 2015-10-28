@@ -21,5 +21,5 @@ angular.module('angularWorkshop')
     $location.path('/user/'+username);
   }
   $scope.message = "Github Viewer";
-  $scope.counter = 5;
+  $scope.counter = 50;
 });

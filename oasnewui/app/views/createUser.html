@@ -25,14 +25,14 @@
 						template-url="group-template.html">
 					<div class="rows">
 						<div class="col-md-6 col-sm-6 col-xs-6 panel-noPadding">
-							<form class="form-horizontal">
+							<form class="form-horizontal" name="createUserDetail">
 								<div class="form-group form-group-sm popup-formgrp">
 									<label for="inputFirstName"
 										class="control-label col-xs-4 popup-frmLabel">First
 										Name*</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="text" class="form-control"
-											placeholder="Enter your first name">
+											placeholder="Enter your first name" required ng-model="user.firstName">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
@@ -41,7 +41,7 @@
 										Name*</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="text" class="form-control"
-											placeholder="Enter your middle name">
+											placeholder="Enter your middle name" ng-model="user.middleName">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
@@ -50,7 +50,7 @@
 										Name*</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="text" class="form-control"
-											placeholder="Enter your last name">
+											placeholder="Enter your last name" required ng-model="user.lastName">
 									</div>
 								</div>
 
@@ -59,13 +59,13 @@
 										class="control-label col-xs-4 popup-frmLabel">Email</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="email" class="form-control" id="inputEmail"
-											placeholder="Email">
+											placeholder="Email" ng-model="user.email">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
 									<label class="col-xs-4 control-label popup-frmLabel">Timezone</label>
 									<div class="col-xs-8 popup-frmInput">
-										<select class="form-control" name="browsers">
+										<select class="form-control" name="browsers" ng-model="user.timezone">
 											<option value="+530">India(delhi,chennai,kolkata)</option>
 											<option value="-1730">US east</option>
 										</select>
@@ -74,7 +74,7 @@
 								<div class="form-group form-group-sm popup-formgrp">
 									<label class="col-xs-4 control-label popup-frmLabel">Role*</label>
 									<div class="col-xs-8 popup-frmInput">
-										<select class="form-control" name="browsers">
+										<select class="form-control" name="browsers" ng-model="user.role">
 											<option value="Administrator">Administrator</option>
 											<option value="Administrative-Co-ordinator">Administrative-Co-ordinator</option>
 											<option value="Proctor">Proctor</option>
@@ -87,7 +87,7 @@
 										UserId</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="email" class="form-control" id="inputEmail"
-											placeholder="Email">
+											placeholder="Email" ng-model="user.extUserId">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
@@ -95,7 +95,7 @@
 										class="control-label col-xs-4 popup-frmLabel">Group</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="email" class="form-control" id="inputEmail"
-											placeholder="Email">
+											placeholder="Email" ng-model="user.groupId">
 									</div>
 								</div>
 
