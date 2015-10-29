@@ -57,6 +57,7 @@ public class CORSFilter implements Filter {
 		in.close();
 		Set<String> allowedOrigins = new HashSet<String>(Arrays.asList(prop
 				.getProperty("allowed.origins").split(",")));
+		System.out.println(request.getHeader("Origin"));
 		if (request.getHeader("Access-Control-Request-Method") != null
 				&& "OPTIONS".equals(request.getMethod())) {
 			String originHeader = request.getHeader("Origin");
@@ -68,6 +69,7 @@ public class CORSFilter implements Filter {
 			response.addHeader("Access-Control-Allow-Headers", "Content-Type");
 			response.addHeader("Access-Control-Max-Age", "1800");
 		}
+		chain.doFilter(req,res);
 
 	}
 
