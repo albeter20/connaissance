@@ -63,6 +63,7 @@ public class CreateAccountAPI {
 			 * available in session. Hence default user will be passed. Else
 			 * logged in user will be passed.
 			 */
+			response.addHeader("Access-Control-Allow-Origin", "*");
 			if (request.getSession() == null)
 				account.setCreatedBy(CommonConstants.DEFAULT_ACCOUNT_USER);
 			else if(null==request.getSession().getAttribute("loggedInUserName")||"".equals(request.getSession().getAttribute("loggedInUserName")))

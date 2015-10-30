@@ -7,32 +7,30 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CORSFilter implements Filter {
+public class CORSFilter extends OncePerRequestFilter {
+	private static final Logger logger = Logger.getLogger(CORSFilter.class);
+//	@Override
+//	public void destroy() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void doFilter(ServletRequest req,
-			ServletResponse res, FilterChain chain)
+	public void doFilterInternal(HttpServletRequest request,
+			HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// HttpServletResponse response=(HttpServletResponse)res;
@@ -48,11 +46,12 @@ public class CORSFilter implements Filter {
 		// }else{
 		//
 		// }
-		HttpServletResponse response=(HttpServletResponse)res;
-		HttpServletRequest request=(HttpServletRequest)req;
+		logger.info("Inside filter");
+//		HttpServletResponse response=(HttpServletResponse)res;
+//		HttpServletRequest request=(HttpServletRequest)req;
 		Properties prop = new Properties();
 		InputStream in = getClass().getResourceAsStream(
-				"BankingProperties.properties");
+				"/config/BankingProperties.properties");
 		prop.load(in);
 		in.close();
 		Set<String> allowedOrigins = new HashSet<String>(Arrays.asList(prop
@@ -62,21 +61,21 @@ public class CORSFilter implements Filter {
 				&& "OPTIONS".equals(request.getMethod())) {
 			String originHeader = request.getHeader("Origin");
 			if (allowedOrigins.contains(request.getHeader("Origin")))
-				response.addHeader("Access-Control-Allow-Origin", originHeader);
+				response.addHeader("Access-Control-Allow-Origin",originHeader);
 
 			response.addHeader("Access-Control-Allow-Methods",
 					"GET, POST, PUT, DELETE");
 			response.addHeader("Access-Control-Allow-Headers", "Content-Type");
 			response.addHeader("Access-Control-Max-Age", "1800");
 		}
-		chain.doFilter(req,res);
+		chain.doFilter(request,response);
 
 	}
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void init(FilterConfig arg0) throws ServletException {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 }

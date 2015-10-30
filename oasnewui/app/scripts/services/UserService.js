@@ -16,7 +16,8 @@ angular.module('oasnewui')
 //			
 			
 
-			return $http.post('https://localhost:8443/onlinebank/api/api/account')
+			return $http.get('https://localhost:8443/onlinebank/api/hello')
+//			return $http.get('https://api.github.com/users/angular')
 			.then(function(response){
 				return response.data;
 			},function(reason){
