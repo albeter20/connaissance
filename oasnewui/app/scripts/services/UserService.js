@@ -14,9 +14,14 @@ angular.module('oasnewui')
 //					'group'+userData.group
 //					);
 //			
-			
+			var hardCodedData={
+					userName:'kingshuk charkraborty',
+					firstName:'kingshuk',
+					middleName:'wow',
+					lastName:'chakraborty'
+			};
 
-			return $http.get('https://localhost:8443/onlinebank/api/hello')
+			return $http.post('https://localhost:8443/onlinebank/api/user',hardCodedData)
 //			return $http.get('https://api.github.com/users/angular')
 			.then(function(response){
 				return response.data;
