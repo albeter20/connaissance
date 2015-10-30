@@ -20,6 +20,7 @@ import com.poc.onlinebank.service.IAccountService;
 
 @RestController
 @RequestMapping(value = "/api/account")
+
 public class CreateAccountAPI {
 	private static final Logger logger = Logger
 			.getLogger(CreateAccountAPI.class);
