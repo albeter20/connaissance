@@ -373,3 +373,27 @@ a:link {
 	padding: 3px;
 	align:centre;
 }
+.panel{
+	box-shadow: 0px 0px 10px 1px #777777 !important;
+-moz-box-shadow: 0px 0px 10px 1px #777777 !important;
+-webkit-box-shadow: 0px 0px 10px 1px #777777 !important;
+}
+
+.panel-default{
+		border-color:#9E9E9E;
+	}
+.panel-default>.panel-heading{
+		background-color:transparent;
+		color: #0F1A32;
+		font-size: 15pt;
+		
+	}
+.panel-default>.panel-heading{
+		background: #E8E8E8;
+		background-image: -webkit-linear-gradient(top, #FFFFFF, #E8E8E8);
+		background-image: -moz-linear-gradient(top, #FFFFFF, #E8E8E8);
+		background-image: -ms-linear-gradient(top, #FFFFFF, #E8E8E8);
+		background-image: -o-linear-gradient(top, #FFFFFF, #E8E8E8);
+		background-image: linear-gradient(to bottom, #FFFFFF, #E8E8E8);
+		text-decoration: none;
+}
