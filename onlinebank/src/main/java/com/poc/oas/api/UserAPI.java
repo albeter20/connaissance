@@ -29,6 +29,7 @@ public class UserAPI {
 			logger.info(user);
 			response.setStatus(HttpStatus.CREATED.value());
 			userTO.setUser(user);
+			userTO.setMessage("User created successfully");
 			return userTO;
 		}catch(Exception e){
 			logger.fatal(e.getCause()+":"+e.getMessage());

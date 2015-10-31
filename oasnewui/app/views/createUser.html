@@ -7,11 +7,12 @@
         </h4>
       </div>
       <div class="panel-collapse collapse" uib-collapse="!isOpen">
-        <div class="panel-body" style="text-align: right;padding-bottom: 1px;height:291px;" ng-transclude></div>
+        <div class="panel-body" style="text-align: right;padding-bottom: 1px;height:339px;" ng-transclude></div>
       </div>
     </div>
   </script>
 <div rows>
+<form class="form-horizontal" name="createUserDetail" ng-submit="createUser()">
 	<div cols="col-md-12 col-sm-12 col-xs-12">
 		<div class="container-fluid popupDialog">
 			<div class="panel panel-default popup-panel">
@@ -20,28 +21,30 @@
 				</div>
 				<div class="panel-body panel-noPadding popup-panelbody">
 					<!--  Accordian start -->
-					<uib-accordion close-others="true"> <uib-accordion-group
-						heading="Primary user data" is-open="true" is-disabled="false"
-						template-url="group-template.html">
-					<div class="rows">
-						<div class="col-md-6 col-sm-6 col-xs-6 panel-noPadding">
-							<form class="form-horizontal" name="createUserDetail">
-								<div class="form-group form-group-sm popup-formgrp">
+					
+						<uib-accordion close-others="true"> <uib-accordion-group
+							heading="Primary user data" is-open="true" is-disabled="false"
+							template-url="group-template.html">
+						<div class="rows">
+							<div class="col-md-6 col-sm-6 col-xs-6 panel-noPadding">
+
+								<div class="form-group form-group-sm popup-formgrp ">
 									<label for="inputFirstName"
 										class="control-label col-xs-4 popup-frmLabel">First
 										Name*</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="text" class="form-control"
-											placeholder="Enter your first name" required ng-model="user.firstName">
+											placeholder="Enter your first name" ng-model="user.firstName" ng-required="true" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('First Name is mandatory')">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
 									<label for="middleName"
 										class="control-label col-xs-4 popup-frmLabel">Middle
-										Name*</label>
+										Name</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="text" class="form-control"
-											placeholder="Enter your middle name" ng-model="user.middleName">
+											placeholder="Enter your middle name" 
+											ng-model="user.middleName">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
@@ -50,7 +53,8 @@
 										Name*</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="text" class="form-control"
-											placeholder="Enter your last name" required ng-model="user.lastName">
+											placeholder="Enter your last name"
+											ng-model="user.lastName" ng-required="true" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Last Name is mandatory')">
 									</div>
 								</div>
 
@@ -58,14 +62,15 @@
 									<label for="inputEmail"
 										class="control-label col-xs-4 popup-frmLabel">Email</label>
 									<div class="col-xs-8 popup-frmInput">
-										<input type="email" class="form-control" id="inputEmail"
-											placeholder="Email" ng-model="user.email">
+										<input type="email" class="form-control" 
+												placeholder="Enter email" ng-model="user.email" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"  oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Email is mandatory')">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
 									<label class="col-xs-4 control-label popup-frmLabel">Timezone</label>
 									<div class="col-xs-8 popup-frmInput">
-										<select class="form-control" name="browsers" ng-model="user.timezone">
+										<select class="form-control" name="browsers" placeholder="Select timezone" ng-pattern="/^[^\s@]+@[^\s@]/"
+											ng-model="user.timezone" ng-required="true">
 											<option value="+530">India(delhi,chennai,kolkata)</option>
 											<option value="-1730">US east</option>
 										</select>
@@ -74,7 +79,8 @@
 								<div class="form-group form-group-sm popup-formgrp">
 									<label class="col-xs-4 control-label popup-frmLabel">Role*</label>
 									<div class="col-xs-8 popup-frmInput">
-										<select class="form-control" name="browsers" ng-model="user.role">
+										<select class="form-control" name="browsers" placeholder="Select role" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]/" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Role is mandatory')"
+											ng-model="user.role">
 											<option value="Administrator">Administrator</option>
 											<option value="Administrative-Co-ordinator">Administrative-Co-ordinator</option>
 											<option value="Proctor">Proctor</option>
@@ -86,92 +92,137 @@
 										class="control-label col-xs-4 popup-frmLabel">External
 										UserId</label>
 									<div class="col-xs-8 popup-frmInput">
-										<input type="email" class="form-control" id="inputEmail"
-											placeholder="Email" ng-model="user.extUserId">
+										<input type="text" class="form-control" 
+											placeholder="External user id" ng-model="user.extUserId">
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
 									<label for="inputEmail"
-										class="control-label col-xs-4 popup-frmLabel">Group</label>
+										class="control-label col-xs-4 popup-frmLabel">Group*</label>
 									<div class="col-xs-8 popup-frmInput">
-										<input type="email" class="form-control" id="inputEmail"
-											placeholder="Email" ng-model="user.groupId">
+										<input type="text" class="form-control" 
+											placeholder="enter organization group" ng-model="user.groupId" ng-required="true" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Group selection is mandatory')">
 									</div>
 								</div>
+<!-- 					</form> -->
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6 div-grpselector">
+					<div class="panel panel-default">
+						<div class="panel-heading popup-panelgrphead">
+							<h3 class="panel-title popup-panelgrptitle">Group selector</h3>
+						</div>
+						<div class="panel-body popup-panelgrpbody"></div>
+					</div>
+				</div>
 
-							</form>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6 div-grpselector">
-							<div class="panel panel-default">
-								<div class="panel-heading popup-panelgrphead">
-									<h3 class="panel-title popup-panelgrptitle">Group selector</h3>
-								</div>
-								<div class="panel-body popup-panelgrpbody"></div>
-							</div>
-						</div>
+			</div>
+
+			</uib-accordion-group>
+			<uib-accordion-group heading="Contact information"
+				template-url="group-template.html">
+<!-- 			<form class="form-horizontal"> -->
+				<div class="form-group form-group-sm popup-formgrp">
+					<label for="inputFirstName"
+						class="control-label col-xs-4 popup-frmLabel">Address line
+						1</label>
+					<div class="col-xs-8 popup-frmInput">
+						<input type="text" class="form-control" ng-model="user.houseNo"
+							placeholder="Please enter house no/Flat no">
+					</div>
+				</div>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label for="inputFirstName"
+						class="control-label col-xs-4 popup-frmLabel">Address line
+						2</label>
+					<div class="col-xs-8 popup-frmInput">
+						<input type="text" class="form-control" ng-model="user.addressLine1"
+							placeholder="Please enter street name">
+					</div>
+				</div>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label for="inputFirstName"
+						class="control-label col-xs-4 popup-frmLabel">City</label>
+					<div class="col-xs-8 popup-frmInput">
+						<input type="text" class="form-control" ng-model="user.city"
+							placeholder="Enter city name">
+					</div>
+				</div>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label for="inputFirstName"
+						class="control-label col-xs-4 popup-frmLabel">State</label>
+					<div class="col-xs-8 popup-frmInput">
+						<select class="form-control" name="browsers" placeholder="Please select state" ng-model="user.state">
+							<option value="Missouri">Missouri</option>
+							<option value="West Verginia">West Verginia</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label for="inputFirstName"
+						class="control-label col-xs-4 popup-frmLabel">Zip</label>
+					<div class="col-xs-8 popup-frmInput">
+						<input type="text" class="form-control" ng-model="user.zip"
+							placeholder="Enter your first name"> 
 
 					</div>
-
-					</uib-accordion-group> <uib-accordion-group heading="Contact information"
-						template-url="group-template.html">
-					<form class="form-horizontal">
-						<div class="form-group form-group-sm popup-formgrp">
-							<label for="inputFirstName"
-								class="control-label col-xs-4 popup-frmLabel">Address
-								line 1</label>
-							<div class="col-xs-8 popup-frmInput">
-								<input type="text" class="form-control"
-									placeholder="Enter your first name">
-							</div>
-						</div>
-						<div class="form-group form-group-sm popup-formgrp">
-							<label for="inputFirstName"
-								class="control-label col-xs-4 popup-frmLabel">Address
-								line 2</label>
-							<div class="col-xs-8 popup-frmInput">
-								<input type="text" class="form-control"
-									placeholder="Enter your first name">
-							</div>
-						</div>
-						<div class="form-group form-group-sm popup-formgrp">
-							<label for="inputFirstName"
-								class="control-label col-xs-4 popup-frmLabel">City</label>
-							<div class="col-xs-8 popup-frmInput">
-								<input type="text" class="form-control"
-									placeholder="Enter your first name">
-							</div>
-						</div>
-						<div class="form-group form-group-sm popup-formgrp">
-							<label for="inputFirstName"
-								class="control-label col-xs-4 popup-frmLabel">State</label>
-							<div class="col-xs-8 popup-frmInput">
-								<select class="form-control" name="browsers">
-									<option value="Missouri">Missouri</option>
-									<option value="West Verginia">West Verginia</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group form-group-sm popup-formgrp">
-							<label for="inputFirstName"
-								class="control-label col-xs-4 popup-frmLabel">Zip</label>
-							<div class="col-xs-8 popup-frmInput">
-								<input type="text" class="form-control"
-									placeholder="Enter your first name"> -
-									
-							</div>
-						</div>
-					</form>
-
-					</uib-accordion-group> </uib-accordion>
-
-					<!-- Accordian end -->
-
 				</div>
-				<div class="modal-footer popup-panelfooter">
-					<button class="btn button" ng-click="createUser()">Save</button>
-					<button class="btn button" ng-click="cancel()">Cancel</button>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label class="col-xs-4">Primary Phone number</label>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="000" ng-model="user.primaryPhone1"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="000" ng-model="user.primaryPhone2"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="1234" ng-model="user.primaryPhone3"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						 <input type="text" class="form-control" placeholder="1234" ng-model="user.primaryPhone4">
+					</div>
 				</div>
-			</div>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label class="col-xs-4">Secondary Phone number</label>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="000" ng-model="user.secondaryPhone1"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="000" ng-model="user.secondaryPhone2"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="1234" ng-model="user.secondaryPhone3"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						 <input type="text" class="form-control" placeholder="1234" ng-model="user.secondaryPhone4">
+					</div>
+				</div>
+				<div class="form-group form-group-sm popup-formgrp">
+					<label class="col-xs-4">Fax</label>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="000" ng-model="user.fax1"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="000" ng-model="user.fax2"> 
+					</div>
+					<div class="col-xs-2 popup-frmInput">
+						<input type="text" class="form-control" placeholder="1234" ng-model="user.fax3"> 
+					</div>
+					
+				</div>
+			</uib-accordion-group>
+			</uib-accordion>
+
+			
+
+			<!-- Accordian end -->
+
 		</div>
+		<div class="modal-footer popup-panelfooter">
+			<input type="submit" value="Save" class="btn button"></input>
+			<button class="btn button" ng-click="cancel()">Cancel</button>
+		</div>
+		</form>
 	</div>
+</div>
+</div>
 </div>
