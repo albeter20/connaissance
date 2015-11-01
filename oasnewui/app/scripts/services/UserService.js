@@ -21,7 +21,7 @@ angular.module('oasnewui')
 					lastName:'chakraborty'
 			};
 
-			return $http.post('https://localhost:8443/onlinebank/api/user',hardCodedData)
+			return $http.post('https://localhost:8443/onlinebank/api/user',userData)
 //			return $http.get('https://api.github.com/users/angular')
 			.then(function(response){
 				return response.data;

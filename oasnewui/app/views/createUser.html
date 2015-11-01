@@ -60,7 +60,7 @@
 
 								<div class="form-group form-group-sm popup-formgrp">
 									<label for="inputEmail"
-										class="control-label col-xs-4 popup-frmLabel">Email</label>
+										class="control-label col-xs-4 popup-frmLabel">Email*</label>
 									<div class="col-xs-8 popup-frmInput">
 										<input type="email" class="form-control" 
 												placeholder="Enter email" ng-model="user.email" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"  oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Email is mandatory')">
@@ -69,24 +69,25 @@
 								<div class="form-group form-group-sm popup-formgrp">
 									<label class="col-xs-4 control-label popup-frmLabel">Timezone</label>
 									<div class="col-xs-8 popup-frmInput">
-										<select class="form-control" name="browsers" placeholder="Select timezone" ng-pattern="/^[^\s@]+@[^\s@]/"
-											ng-model="user.timezone" ng-required="true">
-											<option value="+530">India(delhi,chennai,kolkata)</option>
-											<option value="-1730">US east</option>
+										<select name="timezone" class="form-control"
+											ng-model="user.timezone" ng-options='timezone as timezone.label for timezone in user.timezones track by timezone.timezoneId'>
 										</select>
 									</div>
 								</div>
 								<div class="form-group form-group-sm popup-formgrp">
 									<label class="col-xs-4 control-label popup-frmLabel">Role*</label>
+<!-- 									<div class="col-xs-8 popup-frmInput"> -->
+<!-- 										<select class="form-control ng-valid ng-dirty" ng-model="user.sample" ng-options='item.text for item in user.list track by item.key' -->
+<!-- 										ng-required="true" > -->
+<!-- 										</select> -->
+<!-- 									</div> -->
 									<div class="col-xs-8 popup-frmInput">
-										<select class="form-control" name="browsers" placeholder="Select role" ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]/" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Role is mandatory')"
-											ng-model="user.role">
-											<option value="Administrator">Administrator</option>
-											<option value="Administrative-Co-ordinator">Administrative-Co-ordinator</option>
-											<option value="Proctor">Proctor</option>
+										<select class="form-control ng-valid ng-dirty" ng-model="user.role" ng-options='role as role.label for role in user.roles track by role.id'
+										ng-required="true" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('Role selection is mandatory')">
 										</select>
 									</div>
 								</div>
+								
 								<div class="form-group form-group-sm popup-formgrp">
 									<label for="inputEmail"
 										class="control-label col-xs-4 popup-frmLabel">External
@@ -123,10 +124,10 @@
 <!-- 			<form class="form-horizontal"> -->
 				<div class="form-group form-group-sm popup-formgrp">
 					<label for="inputFirstName"
-						class="control-label col-xs-4 popup-frmLabel">Address line
+						class="control-label col-xs-4 popup-frmLabel">House No/Building No
 						1</label>
 					<div class="col-xs-8 popup-frmInput">
-						<input type="text" class="form-control" ng-model="user.houseNo"
+						<input type="text" class="form-control" ng-model="user.addressLine1"
 							placeholder="Please enter house no/Flat no">
 					</div>
 				</div>
@@ -135,7 +136,7 @@
 						class="control-label col-xs-4 popup-frmLabel">Address line
 						2</label>
 					<div class="col-xs-8 popup-frmInput">
-						<input type="text" class="form-control" ng-model="user.addressLine1"
+						<input type="text" class="form-control" ng-model="user.addressLine2"
 							placeholder="Please enter street name">
 					</div>
 				</div>
@@ -178,7 +179,7 @@
 						<input type="text" class="form-control" placeholder="1234" ng-model="user.primaryPhone3"> 
 					</div>
 					<div class="col-xs-2 popup-frmInput">
-						 <input type="text" class="form-control" placeholder="1234" ng-model="user.primaryPhone4">
+						 <input type="text" class="form-control" placeholder="1234" ng-model="user.primaryExtn">
 					</div>
 				</div>
 				<div class="form-group form-group-sm popup-formgrp">
@@ -193,7 +194,7 @@
 						<input type="text" class="form-control" placeholder="1234" ng-model="user.secondaryPhone3"> 
 					</div>
 					<div class="col-xs-2 popup-frmInput">
-						 <input type="text" class="form-control" placeholder="1234" ng-model="user.secondaryPhone4">
+						 <input type="text" class="form-control" placeholder="1234" ng-model="user.secondaryExtn">
 					</div>
 				</div>
 				<div class="form-group form-group-sm popup-formgrp">
