@@ -8,6 +8,7 @@ public class CommonConstants {
 	public static final String ENCODING_FOR_ENCRYPTION = "UTF-8";
 	public static final String ENCRYPTION_ALGORITHM = "HmacSHA256";
 	public static final boolean ENCODE_HASH_AS_BASE64=false;
+	public static final String DEFAULT_OAS_USER="API";
 	
 
 }

@@ -60,22 +60,32 @@ angular.module('oasnewui').controller('UserController',
 
 				//Preparing address object
 				var address={};
-				address.primaryPhoneNo=$scope.user.primaryPhone1+'-'+$scope.user.primaryPhone2+'-'+$scope.user.primaryPhone3;
-				address.secondaryPhoneNo=$scope.user.secondaryPhone1+'-'+$scope.user.secondaryPhone2+'-'+$scope.user.secondaryPhone3;
+				address.primaryPhone=$scope.user.primaryPhone1+'-'+$scope.user.primaryPhone2+'-'+$scope.user.primaryPhone3;
+				address.secondaryPhone=$scope.user.secondaryPhone1+'-'+$scope.user.secondaryPhone2+'-'+$scope.user.secondaryPhone3;
 				address.addressLine1=$scope.user.addressLine1;
 				address.addressLine2=$scope.user.addressLine2;
 				address.city=$scope.user.city;
 				address.state=$scope.user.state;
-				address.zipCode=$scope.user.zip;
+				address.zipcode=$scope.user.zip;
 				address.fax=$scope.user.fax1+'-'+$scope.user.fax2+'-'+$scope.user.fax3;
 			
-				var userData=$scope.user;
-				userData.address=address;
+				//Prepare user object
+				var userData={};
+				userData.roleId=$scope.user.role.id;
+				userData.firstName=$scope.user.firstName;
+                userData.middleName=$scope.user.middleName;
+                userData.lastName=$scope.user.lastName;
+                userData.email=$scope.user.email;
+                userData.timezone=$scope.user.timezone.timezoneId;
+                userData.orgNodeId=$scope.user.groupId;
+                userData.extSchoolId=$scope.user.extUserId;
+                userData.address=address;
+                
 				$log.info('Prepared object');
 				$log.info(userData);
 				UserService.create(userData)
 				.then(function(response){
-					
+					$scope.message=response.message;
 				},function(reason){
 					$log.info('Issue in controller'+reason.value);
 				});

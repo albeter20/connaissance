@@ -7,6 +7,7 @@ public class UserTO {
 	private UserBean user;
 	private String message;
 	private String status;
+	private String cause;
 
 	public UserBean getUser() {
 		return user;
@@ -31,4 +32,13 @@ public class UserTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public String getCause() {
+		return cause;
+	}
+
+	public void setCause(String cause) {
+		this.cause = cause;
+	}
+	
 }

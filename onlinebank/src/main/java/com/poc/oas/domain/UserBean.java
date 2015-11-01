@@ -14,7 +14,8 @@ public class UserBean{
 	private AddressBean address;
 	private String activeSession;
 	private String timezone;
-	
+	private long roleId;
+	private long orgNodeId;
 	private String passwordHintQuestion;
 	private String passwordHintAnswer;
 	private String resetPassword;
@@ -31,16 +32,23 @@ public class UserBean{
 	private String displayUserName;
 	private String displayNewMessage;
 	
+	// Audit trail data
+	private Date createdDate;
+	private Date modifyDate;
+	private String createdBy;
+	private String modifiedBy;
+
 	public UserBean(long userId, String userName, String password,
 			String firstName, String middleName, String lastName, String email,
 			Date passwordExpirationDate, AddressBean address,
-			String activeSession, String timezone, String passwordHintQuestion,
-			String passwordHintAnswer, String resetPassword,
-			Date lastLoginDate, String prefix, String suffix,
-			String preferredName, String extSchoolId, long dataImportHistoryId,
-			String extPin1, String extPin2, String extPin3,
-			String activationStatus, String displayUserName,
-			String displayNewMessage) {
+			String activeSession, String timezone, long roleId, long orgNodeId,
+			String passwordHintQuestion, String passwordHintAnswer,
+			String resetPassword, Date lastLoginDate, String prefix,
+			String suffix, String preferredName, String extSchoolId,
+			long dataImportHistoryId, String extPin1, String extPin2,
+			String extPin3, String activationStatus, String displayUserName,
+			String displayNewMessage, Date createdDate, Date modifyDate,
+			String createdBy, String modifiedBy) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -53,6 +61,8 @@ public class UserBean{
 		this.address = address;
 		this.activeSession = activeSession;
 		this.timezone = timezone;
+		this.roleId = roleId;
+		this.orgNodeId = orgNodeId;
 		this.passwordHintQuestion = passwordHintQuestion;
 		this.passwordHintAnswer = passwordHintAnswer;
 		this.resetPassword = resetPassword;
@@ -68,6 +78,10 @@ public class UserBean{
 		this.activationStatus = activationStatus;
 		this.displayUserName = displayUserName;
 		this.displayNewMessage = displayNewMessage;
+		this.createdDate = createdDate;
+		this.modifyDate = modifyDate;
+		this.createdBy = createdBy;
+		this.modifiedBy = modifiedBy;
 	}
 
 	@Override
@@ -78,6 +92,7 @@ public class UserBean{
 				+ ", email=" + email + ", passwordExpirationDate="
 				+ passwordExpirationDate + ", address=" + address
 				+ ", activeSession=" + activeSession + ", timezone=" + timezone
+				+ ", roleId=" + roleId + ", orgNodeId=" + orgNodeId
 				+ ", passwordHintQuestion=" + passwordHintQuestion
 				+ ", passwordHintAnswer=" + passwordHintAnswer
 				+ ", resetPassword=" + resetPassword + ", lastLoginDate="
@@ -87,7 +102,9 @@ public class UserBean{
 				+ ", extPin1=" + extPin1 + ", extPin2=" + extPin2
 				+ ", extPin3=" + extPin3 + ", activationStatus="
 				+ activationStatus + ", displayUserName=" + displayUserName
-				+ ", displayNewMessage=" + displayNewMessage + "]";
+				+ ", displayNewMessage=" + displayNewMessage + ", createdDate="
+				+ createdDate + ", modifyDate=" + modifyDate + ", createdBy="
+				+ createdBy + ", modifiedBy=" + modifiedBy + "]";
 	}
 
 	public long getUserId() {
@@ -296,6 +313,54 @@ public class UserBean{
 
 	public void setDisplayNewMessage(String displayNewMessage) {
 		this.displayNewMessage = displayNewMessage;
+	}
+
+	public long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
+	}
+
+	public long getOrgNodeId() {
+		return orgNodeId;
+	}
+
+	public void setOrgNodeId(long orgNodeId) {
+		this.orgNodeId = orgNodeId;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
 	}
 	
 	

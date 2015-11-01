@@ -397,3 +397,10 @@ a:link {
 		background-image: linear-gradient(to bottom, #FFFFFF, #E8E8E8);
 		text-decoration: none;
 }
+.message_success{
+	font-weight:bold;
+	color:green;
+	font-size:14px;
+	margin:0px;
+	padding:10px;
+}

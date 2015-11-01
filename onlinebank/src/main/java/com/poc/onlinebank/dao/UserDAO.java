@@ -17,7 +17,7 @@ import com.poc.onlinebank.domain.User;
 @Configuration
 @PropertySource({ "classpath:config/BankingProperties.properties",
 		"classpath:config/Message.properties" })
-@Repository("userDAO")
+@Repository("userAccountDAO")
 public class UserDAO implements IUserDAO {
 
 	private static final Logger logger = Logger.getLogger(UserDAO.class);

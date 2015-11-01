@@ -29,7 +29,7 @@ import com.poc.onlinebank.dto.AuthenticateTO;
 public class AuthenticateHMACService implements IAuthenticateHMACService {
 
 	@Autowired
-	@Qualifier("userDAO")
+	@Qualifier("userAccountDAO")
 	IUserDAO userDAO;
 	@Autowired
 	Environment env;
