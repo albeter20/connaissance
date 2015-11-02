@@ -30,6 +30,6 @@
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
    <Resource name="jdbc/BankDB" auth="Container" type="javax.sql.DataSource"
-			username="root" password="mysql" driverClassName="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://localhost/onlinebank?zeroDateTimeBehavior=convertToNull" maxActive="8" maxIdle="4" />
+			username="root" password="mysql" driverClassName="com.mysql.jdbc.Driver" validationQuery="select current_date() from dual"
+			url="jdbc:mysql://localhost/oas?zeroDateTimeBehavior=convertToNull" maxActive="8" maxIdle="4" />
 </Context>

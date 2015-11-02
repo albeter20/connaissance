@@ -1,10 +1,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:jee="http://www.springframework.org/schema/jee"
-    xmlns:aop="http://www.springframework.org/schema/aop" 
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:security="http://www.springframework.org/schema/security"
-    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/aop
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop
                         http://www.springframework.org/schema/aop/spring-aop.xsd
                         http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -15,9 +14,17 @@
                         http://www.springframework.org/schema/jee 
                         http://www.springframework.org/schema/jee/spring-jee.xsd">
 
+	<context:component-scan base-package="com" />
+	<!-- Add this tag to enable annotations transactions -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dbDataSource"></property>
+	</bean>
 	<jee:jndi-lookup id="dbDataSource" jndi-name="jdbc/BankDB"
 		expected-type="javax.sql.DataSource" />
-	
+
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dbDataSource" />
 	</bean>
