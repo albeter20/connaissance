@@ -14,14 +14,17 @@ angular.module('oasnewui').controller('UserController',
 		        id:'',
 		        label:'Select Role'
 		        },{
-		        	id:1,
-		        	label:'Administrator'
+		        	id:1003,
+		        	label:'ADMINISTRATOR'
 		        },{
-		        	id:2,
-		        	label:'Administrative Co-ordinator'
+		        	id:1004,
+		        	label:'COORDINATOR'
 		        },{
-		        	id:3,
-		        	label:'Proctor'
+		        	id:1008,
+		        	label:'PROCTOR'
+		        },{
+		        	id:1016,
+		        	label:'ADMINISTRATIVE COORDINATOR'
 		        }];
 	        $scope.user.role=$scope.user.roles[0];	
 	        
