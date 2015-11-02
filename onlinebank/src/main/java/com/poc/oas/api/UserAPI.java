@@ -34,7 +34,7 @@ public class UserAPI {
 	
 	@RequestMapping(method=RequestMethod.POST,produces="application/json")
 	public UserTO createUser(@RequestBody UserBean user,HttpServletRequest request,HttpServletResponse response ){
-		response.addHeader("Access-Control-Allow-Origin",env.getRequiredProperty("allowed.origins"));
+		response.addHeader("Access-Control-Allow-Origin", "https://oastest.com");
 		UserTO userTO=new UserTO();
 		try{
 			logger.info("inside create account");

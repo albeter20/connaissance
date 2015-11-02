@@ -20,7 +20,7 @@ angular.module('oasnewui')
 					middleName:'wow',
 					lastName:'chakraborty'
 			};
-
+//			return $http.get('https://localhost:8443/onlinebank/api/hello')
 			return $http.post('https://localhost:8443/onlinebank/api/user',userData)
 //			return $http.get('https://api.github.com/users/angular')
 			.then(function(response){
