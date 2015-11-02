@@ -105,7 +105,7 @@ public class UserDAO implements IUserDAO{
 							ps.setString(9,userParam.getSuffix());
 							ps.setString(10,userParam.getTimezone());
 							ps.setString(11,userParam.getEmail());
-							ps.setLong(12,1);
+							ps.setNull(12,java.sql.Types.NUMERIC);
 							ps.setString(13,userParam.getPasswordHintAnswer());
 							ps.setLong(14, addressKey.getKey().longValue());
 							ps.setString(15,userParam.getActiveSession());
@@ -122,9 +122,14 @@ public class UserDAO implements IUserDAO{
 						}
 						
 					},userKey);
-			
 			logger.info("Generated user id:"+userKey.getKey().longValue());
-			logger.info("Address data inserted successfully");
+			
+			// Insert user_role
+			
+			jdbcTemplate.update(createUserRole,userKey.getKey().longValue(),userParam.getRoleId(),userParam.getOrgNodeId(),"AC",userParam.getDataImportHistoryId(),1);
+			
+			
+			logger.info("USER,ADDRESS,USER_ROLE data inserted successfully");
 			userTO.setUser(user);
 			userTO.setStatus(CommonConstants.STATUS_SUCCESS);
 			userTO.setMessage(env.getRequiredProperty("accountCreation.successMessage"));
