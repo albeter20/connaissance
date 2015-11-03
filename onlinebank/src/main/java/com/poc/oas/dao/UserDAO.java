@@ -16,6 +16,11 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.poc.common.CommonConstants;
 import com.poc.oas.dao.mapper.UserNameMapper;
@@ -33,6 +38,9 @@ public class UserDAO implements IUserDAO {
 	JdbcTemplate jdbcTemplate;
 	@Autowired
 	Environment env;
+	
+	@Autowired
+    PlatformTransactionManager transactionManager;
 
 	@Override
 	public List getUser(String accountId) {
@@ -44,6 +52,9 @@ public class UserDAO implements IUserDAO {
 	public UserTO createUser(UserBean user) {
 		// TODO Auto-generated method stub
 		logger.info("User data:" + user);
+		TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+        TransactionStatus transactionStatus = transactionManager
+                .getTransaction(transactionDefinition);
 		UserTO userTO = new UserTO();
 		final UserBean userParam = user;
 		final String createStatement = "INSERT INTO ACCOUNT(HOLDER_NAME,DESCRIPTION,ACCOUNT_TYPE,STATUS,OPENING_DATE,CREATE_DATE,CREATED_BY) VALUES(?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?)";
@@ -142,8 +153,11 @@ public class UserDAO implements IUserDAO {
 			userTO.setStatus(CommonConstants.STATUS_SUCCESS);
 			userTO.setMessage(env
 					.getRequiredProperty("accountCreation.successMessage"));
-			logger.info("Account created successfully");
+			transactionManager.commit(transactionStatus);
+			logger.info("User created successfully");
 		} catch (Exception e) {
+			transactionManager.rollback(transactionStatus);
+			logger.fatal("User data insert failed");
 			userTO.setMessage(env
 					.getRequiredProperty("userCreation.errorMessage"));
 			userTO.setStatus(CommonConstants.STATUS_FAILURE);
