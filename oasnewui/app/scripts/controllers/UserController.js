@@ -81,7 +81,7 @@ angular.module('oasnewui').controller('UserController',
                 userData.email=$scope.user.email;
                 userData.timezone=$scope.user.timezone.timezoneId;
                 userData.orgNodeId=$scope.user.groupId;
-                userData.extSchoolId=$scope.user.extUserId;
+                userData.extPin1=$scope.user.extUserId;
                 userData.address=address;
                 
 				$log.info('Prepared object');

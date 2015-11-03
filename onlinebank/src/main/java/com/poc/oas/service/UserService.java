@@ -47,6 +47,18 @@ public class UserService implements IUserService {
 		 */
 		
 		try{
+			/*
+			 * Generate userName first
+			 * 
+			 */
+			String processedUserName=generateUserName(userBean.getFirstName(),userBean.getLastName());
+			logger.info("Generated user name:"+processedUserName);
+			
+			userBean.setDisplayUserName(processedUserName);
+			userBean.setUserName(processedUserName);
+			userBean.setResetPassword("T");
+			userBean.setDisplayNewMessage("Y");
+			
 			userTO=userDAO.createUser(userBean);
 			logger.info(userTO.getStatus());
 			if("SUCCESS".equals(userTO.getStatus())){
@@ -66,6 +78,25 @@ public class UserService implements IUserService {
 			userTO.setMessage(env.getRequiredProperty("userCreation.errorMessage"));
 			return userTO;
 		}
+	}
+	
+	public String generateUserName(String firstName,String lastName){
+		String unprocessedUserName=((firstName.length()>10?firstName.substring(0,10):firstName)+"_"+(lastName.length()>10?lastName.substring(0,10):lastName)).toLowerCase();
+		String processedUserName=new String();
+		try{
+			List<String> userNameList=userDAO.fetchUserName(unprocessedUserName);
+			if(userNameList==null||userNameList.size()==0)
+				processedUserName=unprocessedUserName;
+			else if(userNameList.size()==1)
+				processedUserName=unprocessedUserName+"_01";
+			else{
+				processedUserName=unprocessedUserName+"_"+(String.format("%02d",userNameList.size()));
+			}
+		}catch(Exception e){
+			logger.fatal(e.getCause()+":"+e.getMessage());
+			logger.fatal(e.fillInStackTrace());
+		}
+		return processedUserName;
 	}
 
 }

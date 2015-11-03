@@ -12,4 +12,6 @@ public interface IUserDAO {
 	public UserTO createUser(UserBean user);
 	
 	public long getUserSeqNumber();
+	
+	public List<String> fetchUserName(String userName);
 }
