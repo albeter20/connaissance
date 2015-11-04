@@ -18,6 +18,24 @@
 	<!-- Add this tag to enable annotations transactions -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean 
+		below) -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- the transactional semantics... -->
+		<tx:attributes>
+			<!-- other methods use the default transaction settings (see below) -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ensure that the above transactional advice runs for any execution of 
+		an operation defined by the FooService interface -->
+	<aop:config>
+		<aop:pointcut id="daoOperation"
+			expression="execution(* com.poc.oas.dao.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="daoOperation" />
+	</aop:config>
+
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dbDataSource"></property>
