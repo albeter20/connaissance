@@ -1,18 +1,23 @@
 package com.poc.aspect;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
+import com.poc.oas.api.UserAPI;
 
 @Aspect
 @Component
 public class LoggingAspect {
-	@Before("execution(* com.poc.oas.*.create*(..))")
+	private static final Logger logger = Logger
+			.getLogger(LoggingAspect.class);
+	@Pointcut("execution(* com.poc.oas.*.create*(..))")
 	public void logBefore(JoinPoint joinPoint) {
 
-		System.out.println("logBefore() is running!");
-		System.out.println("hijacked : " + joinPoint.getSignature().getName());
-		System.out.println("******");
+		logger.info("logBefore() is running!");
+		logger.info("hijacked : " + joinPoint.getSignature().getName());
+		logger.info("******************************************************");
 	}
 }
