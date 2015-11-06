@@ -30,13 +30,14 @@ public class UserService implements IUserService {
 	Environment env;
 	
 	@Override
-	public UserTO getAccount(String userId) {
+	public UserTO getUser(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserTO createAccount(UserBean userBean) {
+//	@Transactional
+	public UserTO createUser(UserBean userBean) {
 		// TODO Auto-generated method stub
 		UserTO userTO=new UserTO();
 		ValidationTO validationTO=new ValidationTO();

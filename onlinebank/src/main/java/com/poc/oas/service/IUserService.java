@@ -5,9 +5,9 @@ import com.poc.oas.dto.UserTO;
 
 public interface IUserService {
 
-	public UserTO getAccount(String userId);
+	public UserTO getUser(String userId);
 
-	public UserTO createAccount(UserBean userBean);
+	public UserTO createUser(UserBean userBean);
 	
 	public String generateUserName(String firstName,String lastName);
 

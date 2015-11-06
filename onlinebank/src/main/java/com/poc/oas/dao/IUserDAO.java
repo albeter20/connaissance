@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.poc.oas.domain.UserBean;
 import com.poc.oas.dto.UserTO;
+import com.poc.oas.exception.DataException;
 
 public interface IUserDAO {
 
 	public List getUser(String accountId);
 	
-	public UserTO createUser(UserBean user);
+	public UserTO createUser(UserBean user) throws DataException;
 	
 	public long getUserSeqNumber();
 	

@@ -47,7 +47,7 @@ public class UserAPI {
 				user.setCreatedBy(request.getSession()
 						.getAttribute("loggedInUserName").toString());
 			
-			userTO = userService.createAccount(user);
+			userTO = userService.createUser(user);
 			if (userTO.getStatus().equals("FAILURE")) {
 				if("VALIDATION".equals(userTO.getCause()))
 					response.setStatus(HttpStatus.BAD_REQUEST.value());

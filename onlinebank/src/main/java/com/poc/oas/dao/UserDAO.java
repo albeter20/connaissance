@@ -17,21 +17,19 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.poc.common.CommonConstants;
 import com.poc.oas.dao.mapper.UserNameMapper;
 import com.poc.oas.domain.UserBean;
 import com.poc.oas.dto.UserTO;
+import com.poc.oas.exception.DataException;
 
 @Configuration
 @PropertySource({ "classpath:config/OASProperties.properties",
 		"classpath:config/Message.properties" })
 @Repository("userDAO")
-@Transactional
+
 public class UserDAO implements IUserDAO {
 
 	private static final Logger logger = Logger.getLogger(UserDAO.class);
@@ -39,9 +37,9 @@ public class UserDAO implements IUserDAO {
 	JdbcTemplate jdbcTemplate;
 	@Autowired
 	Environment env;
-	
-	@Autowired
-    PlatformTransactionManager transactionManager;
+//	
+//	@Autowired
+//    PlatformTransactionManager transactionManager;
 
 	@Override
 	public List getUser(String accountId) {
@@ -50,7 +48,8 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public UserTO createUser(UserBean user) {
+//	@Transactional
+	public UserTO createUser(UserBean user) throws DataException{
 		// TODO Auto-generated method stub
 		logger.info("User data:" + user);
 //		TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
@@ -159,10 +158,12 @@ public class UserDAO implements IUserDAO {
 		} catch (Exception e) {
 //			transactionManager.rollback(transactionStatus);
 			logger.fatal("User data insert failed");
+			logger.fatal("Exception type:"+e.getClass());
 			userTO.setMessage(env
 					.getRequiredProperty("userCreation.errorMessage"));
 			userTO.setStatus(CommonConstants.STATUS_FAILURE);
 			logger.fatal(e.fillInStackTrace());
+			throw e;
 		}
 		return userTO;
 	}
